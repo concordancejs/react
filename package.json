@@ -4,14 +4,17 @@
   "description": "Compare, format, diff and serialize React trees with Concordance",
   "main": "index.js",
   "files": [
+    "lib",
     "index.js"
   ],
   "engines": {
     "node": ">=4.5"
   },
   "scripts": {
+    "build:fixtures": "babel --presets=react,@ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
     "coverage": "nyc npm test",
     "lint": "as-i-preach",
+    "pretest": "npm run build:fixtures",
     "test": "ava",
     "posttest": "as-i-preach"
   },
@@ -30,13 +33,43 @@
     "concordance",
     "react"
   ],
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "lodash.flattendeep": "^4.4.0"
+  },
   "devDependencies": {
     "@novemberborn/as-i-preach": "^9.0.0",
     "ava": "^0.19.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "codecov": "^2.1.0",
-    "nyc": "^10.1.2"
+    "concordance": "^0.5.0",
+    "nyc": "^10.1.2",
+    "react": "^15.5.4",
+    "react-test-renderer": "^15.5.4"
   },
-  "as-i-preach": {},
+  "as-i-preach": {
+    "allowDevDependencies": [
+      "test/**/*.js",
+      "test/**/*.jsx"
+    ],
+    "ignore": [
+      "test/fixtures/react/*.js"
+    ]
+  },
+  "ava": {
+    "source": [
+      "!test/**/*.js.snap"
+    ],
+    "babel": {
+      "presets": [
+        "@ava/stage-4",
+        "@ava/transform-test-files",
+        "react"
+      ]
+    }
+  },
   "nyc": {
     "reporter": [
       "html",

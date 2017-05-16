@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formats array values in object properties 1`] = `
+"<Foo
+  object={
+    Object {
+      baz: Array [
+        'thud',
+      ],
+    }
+  }
+/>"
+`;
+
+exports[`formats array values in object properties in children 1`] = `
+"<Foo>
+  <Bar
+    key=\\"bar\\"
+    object={
+      Object {
+        baz: Array [
+          'thud',
+        ],
+      }
+    }
+  />
+</Foo>"
+`;
+
+exports[`formats concatenated string and number children 1`] = `
+"<div>
+  foo bar 42
+</div>"
+`;
+
+exports[`formats concatenated string children (no space insertion) 1`] = `
+"<div>
+  foo␊
+  bar baz
+</div>"
+`;
+
+exports[`formats illegal spaces in property names 1`] = `
+"<Foo
+  \\"foo bar\\"=\\"baz\\"
+/>"
+`;
+
+exports[`formats multiline string properties 1`] = `
+"<Foo
+  multiline={
+    \`foo␊
+    bar\`
+  }
+/>"
+`;
+
+exports[`formats object properties 1`] = `
+"<Foo
+  object={
+    Object {
+      baz: 'thud',
+    }
+  }
+/>"
+`;
+
+exports[`formats properties and children 1`] = `
+"<Foo
+  foo=\\"bar\\"
+>
+  baz
+</Foo>"
+`;
+
+exports[`formats react elements 1`] = `
+"<HelloMessage⍟
+  name=\\"John\\"
+/>"
+`;
+
+exports[`formats rendered array values in object properties 1`] = `
+"<Foo
+  object={
+    Object {
+      baz: Array [
+        'thud',
+      ],
+    }
+  }
+/>"
+`;
+
+exports[`formats rendered array values in object properties in children 1`] = `
+"<Foo>
+  <Bar
+    object={
+      Object {
+        baz: Array [
+          'thud',
+        ],
+      }
+    }
+  />
+</Foo>"
+`;
+
+exports[`formats rendered concatenated string and number children 1`] = `
+"<div>
+  foo bar 42
+</div>"
+`;
+
+exports[`formats rendered concatenated string children (no space insertion) 1`] = `
+"<div>
+  foo␊
+  bar baz
+</div>"
+`;
+
+exports[`formats rendered illegal spaces in property names 1`] = `
+"<Foo
+  \\"foo bar\\"=\\"baz\\"
+/>"
+`;
+
+exports[`formats rendered multiline string properties 1`] = `
+"<Foo
+  multiline={
+    \`foo␊
+    bar\`
+  }
+/>"
+`;
+
+exports[`formats rendered object properties 1`] = `
+"<Foo
+  object={
+    Object {
+      baz: 'thud',
+    }
+  }
+/>"
+`;
+
+exports[`formats rendered properties and children 1`] = `
+"<Foo
+  foo=\\"bar\\"
+>
+  baz
+</Foo>"
+`;
+
+exports[`formats rendered react elements 1`] = `
+"<div>
+  Hello 
+  <mark>
+    John
+  </mark>
+</div>"
+`;
