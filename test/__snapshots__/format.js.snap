@@ -46,6 +46,17 @@ exports[`formats illegal spaces in property names 1`] = `
 />"
 `;
 
+exports[`formats max depth 1`] = `
+"<div>
+  <div>
+    <div>…</div>
+    <div…>…</div>
+    <br… />
+    <br />
+  </div>
+</div>"
+`;
+
 exports[`formats multiline string properties 1`] = `
 "<Foo
   multiline={
@@ -122,6 +133,17 @@ exports[`formats rendered illegal spaces in property names 1`] = `
 "<Foo
   \\"foo bar\\"=\\"baz\\"
 />"
+`;
+
+exports[`formats rendered max depth 1`] = `
+"<div>
+  <div>
+    <div>…</div>
+    <div…>…</div>
+    <br… />
+    <br />
+  </div>
+</div>"
 `;
 
 exports[`formats rendered multiline string properties 1`] = `

@@ -7,15 +7,15 @@ import plugin from '../'
 import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
-const format = value => concordance.format(value, {plugins})
+const format = (value, options) => concordance.format(value, Object.assign({plugins}, options))
 
-const snapshot = (t, getValue) => {
-  t.snapshot(format(getValue()))
+const snapshot = (t, getValue, options) => {
+  t.snapshot(format(getValue(), options))
 }
 snapshot.title = prefix => `formats ${prefix}`
-const snapshotRendered = (t, getValue) => {
+const snapshotRendered = (t, getValue, options) => {
   const tree = renderer.create(getValue()).toJSON()
-  t.snapshot(format(tree))
+  t.snapshot(format(tree, options))
 }
 snapshotRendered.title = prefix => `formats rendered ${prefix}`
 
@@ -46,3 +46,16 @@ test('concatenated string children (no space insertion)', macros, () => {
 test('properties and children', macros, () => {
   return React.createElement('Foo', {foo: 'bar'}, 'baz')
 })
+
+test('max depth', macros, () => {
+  return <div>
+    <div>
+      <div>
+        Hello
+      </div>
+      <div id='foo'>Hello</div>
+      <br id='bar'/>
+      <br/>
+    </div>
+  </div>
+}, {maxDepth: 2})

@@ -130,6 +130,23 @@ exports[`diffs first has properties, second has children, same name 1`] = `
 + </Foo>"
 `;
 
+exports[`diffs max depth 1`] = `
+"  <div>
+    <div>
+      <div>…</div>
+      <div…>…</div>
+      <br… />
+      <br />
+      <section>
+        <div>
+-         Foo
++         Bar
+        </div>
+      </section>
+    </div>
+  </div>"
+`;
+
 exports[`diffs multiline string properties 1`] = `
 "  <Foo
     multiline={
@@ -326,6 +343,23 @@ exports[`diffs rendered first has properties, second has children, same name 1`]
 + <Foo>
 +   <Baz />
 + </Foo>"
+`;
+
+exports[`diffs rendered max depth 1`] = `
+"  <div>
+    <div>
+      <div>…</div>
+      <div…>…</div>
+      <br… />
+      <br />
+      <section>
+        <div>
+-         Foo
++         Bar
+        </div>
+      </section>
+    </div>
+  </div>"
 `;
 
 exports[`diffs rendered multiline string properties 1`] = `

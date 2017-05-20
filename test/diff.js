@@ -8,13 +8,13 @@ import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
 
-const diff = (t, getSame, getOther) => {
-  t.snapshot(concordance.diff(getSame(), getOther(), {plugins}))
+const diff = (t, getSame, getOther, options) => {
+  t.snapshot(concordance.diff(getSame(), getOther(), Object.assign({plugins}, options)))
 }
 diff.title = prefix => `diffs ${prefix}`
-const diffRendered = (t, getSame, getOther) => {
+const diffRendered = (t, getSame, getOther, options) => {
   const render = value => renderer.create(value).toJSON()
-  t.snapshot(concordance.diff(render(getSame()), render(getOther()), {plugins}))
+  t.snapshot(concordance.diff(render(getSame()), render(getOther()), Object.assign({plugins}, options)))
 }
 diffRendered.title = prefix => `diffs rendered ${prefix}`
 
@@ -139,3 +139,36 @@ test('neither have properties, second has children, same name', macros,
 test('neither have properties, neither has children, same name', macros,
   () => React.createElement('Foo'),
   () => React.createElement('Foo'))
+
+test('max depth', macros,
+  () => <div>
+    <div>
+      <div>
+        Hello
+      </div>
+      <div id='foo'>Hello</div>
+      <br id='bar'/>
+      <br/>
+      <section>
+        <div>
+          Foo
+        </div>
+      </section>
+    </div>
+  </div>,
+  () => <div>
+    <div>
+      <div>
+        Hello
+      </div>
+      <div id='foo'>Hello</div>
+      <br id='bar'/>
+      <br/>
+      <section>
+        <div>
+          Bar
+        </div>
+      </section>
+    </div>
+  </div>,
+  {maxDepth: 2})

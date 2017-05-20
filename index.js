@@ -13,7 +13,7 @@ exports.apiVersion = 0
 // Expected minimal version of Concordance. Concordance will increment its API
 // version for breaking changes, this is useful if you rely on features or
 // patches that were introduced in a specific version of Concordance.
-exports.minimalConcordanceVersion = '0.4.0'
+exports.minimalConcordanceVersion = '0.6.0'
 
 // Plugin-specific version of its serialization output.
 exports.serializerVersion = 0
