@@ -43,6 +43,8 @@ exports.theme = {
       }
     },
     child: {
+      openBracket: '{',
+      closeBracket: '}',
       string: {
         line: {open: '', close: '', escapeQuote: ''},
         multiline: {start: '', end: '', escapeQuote: ''}
@@ -55,11 +57,14 @@ const ELEMENT = Symbol.for('react.element')
 const TEST_JSON = Symbol.for('react.test.json')
 
 function register (api) {
-  const element = elementFactory(api)
+  const reactTags = new Set()
+  const element = elementFactory(api, reactTags)
   const testJson = testJsonFactory(api, element)
 
   api.addDescriptor(0x01, element.tag, element.deserialize)
   api.addDescriptor(0x02, testJson.tag, testJson.deserialize)
+
+  reactTags.add(element.tag).add(testJson.tag)
 
   return value => {
     if (value.$$typeof === ELEMENT) return element.describe

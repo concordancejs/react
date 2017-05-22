@@ -56,7 +56,7 @@ test('multiline string properties', macros,
   () => React.createElement('Foo', {multiline: 'foo\nbar'}),
   () => React.createElement('Foo', {multiline: 'foo\nbaz'}))
 
-test('concatenated string and number children', macros,
+test('string and number children', macros,
   () => React.createElement('div', null, 'foo', 'bar', 42),
   () => React.createElement('div', null, 'foo bar', 39))
 

@@ -77,13 +77,6 @@ exports[`diffs both have properties, second has children, same name 1`] = `
 + </Foo>"
 `;
 
-exports[`diffs concatenated string and number children 1`] = `
-"  <div>
--   foo bar 42
-+   foo bar 39
-  </div>"
-`;
-
 exports[`diffs first has properties, both have children, different names 1`] = `
 "- <Foo
 -   foo=\\"bar\\"
@@ -292,13 +285,6 @@ exports[`diffs rendered both have properties, second has children, same name 1`]
 + </Foo>"
 `;
 
-exports[`diffs rendered concatenated string and number children 1`] = `
-"  <div>
--   foo bar 42
-+   foo bar 39
-  </div>"
-`;
-
 exports[`diffs rendered first has properties, both have children, different names 1`] = `
 "- <Foo
 -   foo=\\"bar\\"
@@ -479,6 +465,16 @@ exports[`diffs rendered second has properties, second has children, same name 1`
 + </Foo>"
 `;
 
+exports[`diffs rendered string and number children 1`] = `
+"  <div>
+-   foo
++   foo bar
+-   bar
+-   {42}
++   {39}
+  </div>"
+`;
+
 exports[`diffs second has properties, both have children, different names 1`] = `
 "- <Foo>
 -   <Bar />
@@ -523,6 +519,16 @@ exports[`diffs second has properties, second has children, same name 1`] = `
 + >
 +   <Baz />
 + </Foo>"
+`;
+
+exports[`diffs string and number children 1`] = `
+"  <div>
+-   foo
++   foo bar
+-   bar
+-   {42}
++   {39}
+  </div>"
 `;
 
 exports[`same name, different component function 1`] = `

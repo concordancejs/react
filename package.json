@@ -34,8 +34,7 @@
     "react"
   ],
   "dependencies": {
-    "arrify": "^1.0.1",
-    "lodash.flattendeep": "^4.4.0"
+    "arrify": "^1.0.1"
   },
   "devDependencies": {
     "@novemberborn/as-i-preach": "^9.0.0",

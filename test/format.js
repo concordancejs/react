@@ -37,11 +37,8 @@ test('multiline string properties', macros, () => {
 test('illegal spaces in property names', macros, () => {
   return React.createElement('Foo', {'foo bar': 'baz'})
 })
-test('concatenated string and number children', macros, () => {
+test('string and number children', macros, () => {
   return React.createElement('div', null, 'foo', 'bar', 42)
-})
-test('concatenated string children (no space insertion)', macros, () => {
-  return React.createElement('div', null, 'foo\n', 'bar', ' baz')
 })
 test('properties and children', macros, () => {
   return React.createElement('Foo', {foo: 'bar'}, 'baz')
@@ -62,4 +59,13 @@ test('max depth', macros, () => {
 
 test('single line attribute values', snapshot, () => {
   return React.createElement('Foo', {bool: true})
+})
+
+test('opaque children', snapshot, () => {
+  return <div>
+    {true}
+    {-0}
+    {() => {}}
+    {new Set(['foo'])}
+  </div>
 })
