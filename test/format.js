@@ -59,3 +59,7 @@ test('max depth', macros, () => {
     </div>
   </div>
 }, {maxDepth: 2})
+
+test('single line attribute values', snapshot, () => {
+  return React.createElement('Foo', {bool: true})
+})

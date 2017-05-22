@@ -181,3 +181,9 @@ exports[`formats rendered react elements 1`] = `
   </mark>
 </div>"
 `;
+
+exports[`formats single line attribute values 1`] = `
+"<Foo
+  bool={true}
+/>"
+`;
