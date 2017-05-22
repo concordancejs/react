@@ -3,8 +3,8 @@
 exports[`formats array values in object properties 1`] = `
 "<Foo
   object={
-    Object {
-      baz: Array [
+    {
+      baz: [
         'thud',
       ],
     }
@@ -17,8 +17,8 @@ exports[`formats array values in object properties in children 1`] = `
   <Bar
     key=\\"bar\\"
     object={
-      Object {
-        baz: Array [
+      {
+        baz: [
           'thud',
         ],
       }
@@ -56,7 +56,7 @@ exports[`formats multiline string properties 1`] = `
 exports[`formats object properties 1`] = `
 "<Foo
   object={
-    Object {
+    {
       baz: 'thud',
     }
   }
@@ -93,8 +93,8 @@ exports[`formats react elements 1`] = `
 exports[`formats rendered array values in object properties 1`] = `
 "<Foo
   object={
-    Object {
-      baz: Array [
+    {
+      baz: [
         'thud',
       ],
     }
@@ -106,8 +106,8 @@ exports[`formats rendered array values in object properties in children 1`] = `
 "<Foo>
   <Bar
     object={
-      Object {
-        baz: Array [
+      {
+        baz: [
           'thud',
         ],
       }
@@ -145,7 +145,7 @@ exports[`formats rendered multiline string properties 1`] = `
 exports[`formats rendered object properties 1`] = `
 "<Foo
   object={
-    Object {
+    {
       baz: 'thud',
     }
   }

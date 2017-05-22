@@ -3,8 +3,8 @@
 exports[`diffs array values in object properties 1`] = `
 "  <Foo
     object={
-      Object {
-        baz: Array [
+      {
+        baz: [
 -         'thud',
 +         'qux',
         ],
@@ -17,8 +17,8 @@ exports[`diffs array values in object properties in children 1`] = `
 "  <Foo>
     <Bar
       object={
-        Object {
-          baz: Array [
+        {
+          baz: [
 -           'thud',
 +           'qux',
           ],
@@ -185,7 +185,7 @@ exports[`diffs neither have properties, second has children, same name 1`] = `
 exports[`diffs object properties 1`] = `
 "  <Foo
     object={
-      Object {
+      {
 -       baz: 'thud',
 +       baz: 'qux',
       }
@@ -211,8 +211,8 @@ exports[`diffs react elements 1`] = `
 exports[`diffs rendered array values in object properties 1`] = `
 "  <Foo
     object={
-      Object {
-        baz: Array [
+      {
+        baz: [
 -         'thud',
 +         'qux',
         ],
@@ -225,8 +225,8 @@ exports[`diffs rendered array values in object properties in children 1`] = `
 "  <Foo>
     <Bar
       object={
-        Object {
-          baz: Array [
+        {
+          baz: [
 -           'thud',
 +           'qux',
           ],
@@ -393,7 +393,7 @@ exports[`diffs rendered neither have properties, second has children, same name 
 exports[`diffs rendered object properties 1`] = `
 "  <Foo
     object={
-      Object {
+      {
 -       baz: 'thud',
 +       baz: 'qux',
       }
