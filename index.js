@@ -8,15 +8,15 @@ const testJsonFactory = require('./lib/testJsonFactory')
 exports.name = pkg.name
 
 // Expected API version to be passed to register().
-exports.apiVersion = 0
+exports.apiVersion = 1
 
 // Expected minimal version of Concordance. Concordance will increment its API
 // version for breaking changes, this is useful if you rely on features or
 // patches that were introduced in a specific version of Concordance.
-exports.minimalConcordanceVersion = '0.7.0'
+exports.minimalConcordanceVersion = '1.0.0'
 
 // Plugin-specific version of its serialization output.
-exports.serializerVersion = 0
+exports.serializerVersion = 1
 
 exports.theme = {
   react: {
