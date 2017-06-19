@@ -1,6 +1,6 @@
 {
   "name": "@concordance/react",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Compare, format, diff and serialize React trees with Concordance",
   "main": "index.js",
   "files": [
