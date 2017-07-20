@@ -37,14 +37,14 @@
     "arrify": "^1.0.1"
   },
   "devDependencies": {
-    "@novemberborn/as-i-preach": "^10.0.1",
+    "@novemberborn/as-i-preach": "^10.1.0",
     "ava": "^0.19.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-preset-react": "^6.24.1",
     "codecov": "^2.1.0",
-    "concordance": "^2.0.0",
-    "nyc": "^11.0.1",
+    "concordance": "^3.0.0",
+    "nyc": "^11.0.3",
     "react": "^15.6.1",
     "react-test-renderer": "^15.6.1"
   },
