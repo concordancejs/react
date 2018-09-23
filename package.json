@@ -8,7 +8,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=4.5"
+    "node": ">=6.12.3 <7 || >=8.9.4 <9 || >=10.0.0"
   },
   "scripts": {
     "build:fixtures": "babel --presets=module:@babel/preset-react,module:ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",

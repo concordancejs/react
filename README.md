@@ -12,9 +12,7 @@ These may be compared to `React.createElement()` objects.
 When comparing [React
 component](https://facebook.github.io/react/docs/components-and-props.html)
 elements, the element type is compared by identity. After deserialization the
-element types are compared by function name, taking into account whether
-serialization and / or comparison is done using Node.js 4, which has less
-reliable support for function names.
+element types are compared by function name.
 
 Component elements are formatted with a &#x235F; character after the element
 name. Properties and children are formatted by [Concordance](https://github.com/concordancejs/concordance).
