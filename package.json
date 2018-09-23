@@ -11,7 +11,7 @@
     "node": ">=4.5"
   },
   "scripts": {
-    "build:fixtures": "babel --presets=react,@ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
+    "build:fixtures": "babel --presets=module:@babel/preset-react,module:ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
     "coverage": "nyc npm test",
     "lint": "as-i-preach",
     "pretest": "npm run build:fixtures",
@@ -37,11 +37,11 @@
     "arrify": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@novemberborn/as-i-preach": "^10.1.0",
-    "ava": "^0.21.0",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-preset-react": "^6.24.1",
+    "ava": "1.0.0-beta.8",
     "codecov": "^3.1.0",
     "concordance": "^3.0.0",
     "nyc": "^13.0.1",
@@ -58,15 +58,12 @@
     ]
   },
   "ava": {
-    "source": [
-      "!test/**/*.js.snap"
-    ],
     "babel": {
-      "presets": [
-        "@ava/stage-4",
-        "@ava/transform-test-files",
-        "react"
-      ]
+      "testOptions": {
+        "presets": [
+          "module:@babel/preset-react"
+        ]
+      }
     }
   },
   "nyc": {
