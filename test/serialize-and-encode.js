@@ -46,6 +46,7 @@ useDeserializedRendered.title = prefix => `deserialized rendered ${prefix} is eq
 const macros = [useDeserialized, useDeserializedRendered]
 
 test('react elements', macros, () => <HelloMessage name='John' />)
+test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
   return React.createElement('Foo', {object: {baz: 'thud'}})
 })

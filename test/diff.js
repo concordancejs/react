@@ -28,6 +28,10 @@ test('react elements', macros,
   () => <strong>arm</strong>,
   () => <em>arm</em>)
 
+test('fragments', macros,
+  () => <React.Fragment><HelloMessage name='John' /></React.Fragment>,
+  () => <React.Fragment><HelloMessage name='Olivia' /></React.Fragment>)
+
 test('object properties', macros,
   () => React.createElement('Foo', {object: {baz: 'thud'}}),
   () => React.createElement('Foo', {object: {baz: 'qux'}}))

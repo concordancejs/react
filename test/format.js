@@ -22,6 +22,7 @@ snapshotRendered.title = prefix => `formats rendered ${prefix}`
 const macros = [snapshot, snapshotRendered]
 
 test('react elements', macros, () => <HelloMessage name='John' />)
+test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
   return React.createElement('Foo', {object: {baz: 'thud'}})
 })

@@ -30,6 +30,10 @@ test('react elements', macros,
   () => React.createElement('Foo'),
   () => React.createElement('Bar'))
 
+test('fragments', macros,
+  () => <React.Fragment><HelloMessage name='John' /></React.Fragment>,
+  () => <React.Fragment><HelloMessage name='Olivia' /></React.Fragment>)
+
 test('compare rendered elements against an expected React tree', t => {
   const actual = <HelloMessage name='John' />
   const expected = <div>Hello <mark>John</mark></div>
