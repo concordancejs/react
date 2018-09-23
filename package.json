@@ -12,11 +12,9 @@
   },
   "scripts": {
     "build:fixtures": "babel --presets=module:@babel/preset-react,module:ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
-    "coverage": "nyc npm test",
     "lint": "as-i-preach",
-    "pretest": "npm run build:fixtures",
-    "test": "ava",
-    "posttest": "as-i-preach"
+    "pretest": "npm run -s build:fixtures",
+    "test": "npm run -s lint && nyc ava"
   },
   "repository": {
     "type": "git",
