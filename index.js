@@ -16,7 +16,7 @@ exports.apiVersion = 1
 exports.minimalConcordanceVersion = '1.0.0'
 
 // Plugin-specific version of its serialization output.
-exports.serializerVersion = 1
+exports.serializerVersion = 2
 
 exports.theme = {
   react: {
