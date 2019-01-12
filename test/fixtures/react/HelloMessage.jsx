@@ -11,3 +11,5 @@ export default class HelloMessage extends React.Component {
     return <div>Hello <NameHighlight name={this.props.name} /></div>
   }
 }
+
+export const MemoizedHelloMessage = React.memo(HelloMessage)

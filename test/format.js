@@ -4,7 +4,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 import plugin from '..'
-import HelloMessage from './fixtures/react/HelloMessage'
+import HelloMessage, {MemoizedHelloMessage} from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
 const format = (value, options) => concordance.format(value, Object.assign({plugins}, options))
@@ -22,6 +22,7 @@ snapshotRendered.title = prefix => `formats rendered ${prefix}`
 const macros = [snapshot, snapshotRendered]
 
 test('react elements', macros, () => <HelloMessage name='John' />)
+test('memoized elements', macros, () => <MemoizedHelloMessage name='John' />)
 test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
   return React.createElement('Foo', {object: {baz: 'thud'}})

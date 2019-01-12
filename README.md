@@ -14,5 +14,11 @@ component](https://facebook.github.io/react/docs/components-and-props.html)
 elements, the element type is compared by identity. After deserialization the
 element types are compared by function name.
 
-Component elements are formatted with a &#x235F; character after the element
-name. Properties and children are formatted by [Concordance](https://github.com/concordancejs/concordance).
+[Memoized elements](https://reactjs.org/docs/react-api.html#reactmemo) are
+supported, however different memoizations of the same function are considered
+equal if used with the same properties.
+
+Memoized elements are formatted with a &#x235D; character after the element
+name. Component elements are formatted with a &#x235F; character. Properties and
+children are formatted by
+[Concordance](https://github.com/concordancejs/concordance).

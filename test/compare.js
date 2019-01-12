@@ -4,7 +4,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 import plugin from '..'
-import HelloMessage from './fixtures/react/HelloMessage'
+import HelloMessage, {MemoizedHelloMessage} from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
 const render = value => renderer.create(value).toJSON()
@@ -29,6 +29,15 @@ test('properties of react elements', macros,
 test('react elements', macros,
   () => React.createElement('Foo'),
   () => React.createElement('Bar'))
+
+test('memoized elements', macros,
+  () => <MemoizedHelloMessage name='John' />,
+  () => <MemoizedHelloMessage name='Olivia' />)
+
+test('different memoizations are equal', t => {
+  const SecondHelloMessage = React.memo(HelloMessage)
+  t.true(concordance.compare(<MemoizedHelloMessage name='John' />, <SecondHelloMessage name='John' />, {plugins}).pass)
+})
 
 test('fragments', macros,
   () => <React.Fragment><HelloMessage name='John' /></React.Fragment>,

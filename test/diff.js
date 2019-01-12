@@ -4,7 +4,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 import plugin from '..'
-import HelloMessage from './fixtures/react/HelloMessage'
+import HelloMessage, {MemoizedHelloMessage} from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
 
@@ -27,6 +27,14 @@ test('property differences between react elements', macros,
 test('react elements', macros,
   () => <strong>arm</strong>,
   () => <em>arm</em>)
+
+test('memoized elements', macros,
+  () => <MemoizedHelloMessage name='John' />,
+  () => <MemoizedHelloMessage name='Olivia' />)
+
+test('memoized elements against non-memoized elements', macros,
+  () => <MemoizedHelloMessage name='John' />,
+  () => <HelloMessage name='John' />)
 
 test('fragments', macros,
   () => <React.Fragment><HelloMessage name='John' /></React.Fragment>,

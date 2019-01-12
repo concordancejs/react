@@ -21,6 +21,7 @@ exports.serializerVersion = 2
 exports.theme = {
   react: {
     functionType: '\u235F',
+    memoizedType: `\u235D`,
     openTag: {
       start: '<',
       end: '>',

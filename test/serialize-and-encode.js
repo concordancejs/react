@@ -5,7 +5,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 import plugin from '..'
-import HelloMessage from './fixtures/react/HelloMessage'
+import HelloMessage, {MemoizedHelloMessage} from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
 
@@ -46,15 +46,7 @@ useDeserializedRendered.title = prefix => `deserialized rendered ${prefix} is eq
 const macros = [useDeserialized, useDeserializedRendered]
 
 test('react elements', macros, () => <HelloMessage name='John' />)
-// TODO: Combine next two tests with `macros` array
-test.failing('memoized react elements', useDeserialized, () => {
-  const MemoizedHelloMessage = React.memo(HelloMessage)
-  return <MemoizedHelloMessage name='John' />
-})
-test('memoized react elements', useDeserializedRendered, () => {
-  const MemoizedHelloMessage = React.memo(HelloMessage)
-  return <MemoizedHelloMessage name='John' />
-})
+test('memoized elements', macros, () => <MemoizedHelloMessage name='John' />)
 test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
   return React.createElement('Foo', {object: {baz: 'thud'}})
