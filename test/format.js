@@ -3,7 +3,7 @@ import concordance from 'concordance'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import plugin from '../'
+import plugin from '..'
 import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
@@ -46,16 +46,18 @@ test('properties and children', macros, () => {
 })
 
 test('max depth', macros, () => {
-  return <div>
+  return (
     <div>
       <div>
-        Hello
+        <div>
+          Hello
+        </div>
+        <div id='foo'>Hello</div>
+        <br id='bar'/>
+        <br/>
       </div>
-      <div id='foo'>Hello</div>
-      <br id='bar'/>
-      <br/>
     </div>
-  </div>
+  )
 }, {maxDepth: 2})
 
 test('single line attribute values', snapshot, () => {
@@ -63,10 +65,12 @@ test('single line attribute values', snapshot, () => {
 })
 
 test('opaque children', snapshot, () => {
-  return <div>
-    {true}
-    {-0}
-    {() => {}}
-    {new Set(['foo'])}
-  </div>
+  return (
+    <div>
+      {true}
+      {-0}
+      {() => {}}
+      {new Set(['foo'])}
+    </div>
+  )
 })

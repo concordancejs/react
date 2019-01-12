@@ -3,7 +3,7 @@ import concordance from 'concordance'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import plugin from '../'
+import plugin from '..'
 import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
@@ -145,34 +145,38 @@ test('neither have properties, neither has children, same name', macros,
   () => React.createElement('Foo'))
 
 test('max depth', macros,
-  () => <div>
+  () => (
     <div>
       <div>
-        Hello
-      </div>
-      <div id='foo'>Hello</div>
-      <br id='bar'/>
-      <br/>
-      <section>
         <div>
-          Foo
+          Hello
         </div>
-      </section>
+        <div id='foo'>Hello</div>
+        <br id='bar'/>
+        <br/>
+        <section>
+          <div>
+            Foo
+          </div>
+        </section>
+      </div>
     </div>
-  </div>,
-  () => <div>
+  ),
+  () => (
     <div>
       <div>
-        Hello
-      </div>
-      <div id='foo'>Hello</div>
-      <br id='bar'/>
-      <br/>
-      <section>
         <div>
-          Bar
+          Hello
         </div>
-      </section>
+        <div id='foo'>Hello</div>
+        <br id='bar'/>
+        <br/>
+        <section>
+          <div>
+            Bar
+          </div>
+        </section>
+      </div>
     </div>
-  </div>,
+  ),
   {maxDepth: 2})

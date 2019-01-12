@@ -3,7 +3,7 @@ import concordance from 'concordance'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import plugin from '../'
+import plugin from '..'
 import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
