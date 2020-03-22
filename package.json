@@ -8,13 +8,12 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=6.12.3 <7 || >=8.9.4 <9 || >=10.0.0"
+    "node": ">=10.18.0 <11 || >=12.14.0 <13 || >=13.5.0"
   },
   "scripts": {
-    "build:fixtures": "babel --presets=module:@babel/preset-react,module:ava/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
-    "lint": "as-i-preach",
+    "build:fixtures": "babel --presets=module:@babel/preset-react,module:@ava/babel/stage-4 --out-dir=test/fixtures/react --extensions=.jsx test/fixtures/react",
     "pretest": "npm run -s build:fixtures",
-    "test": "npm run -s lint && nyc ava"
+    "test": "as-i-preach && nyc ava"
   },
   "repository": {
     "type": "git",
@@ -32,28 +31,28 @@
     "react"
   ],
   "dependencies": {
-    "arrify": "^1.0.1"
+    "arrify": "^2.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-react": "^7.0.0",
-    "@novemberborn/as-i-preach": "^11.0.0",
-    "ava": "^1.0.1",
-    "codecov": "^3.1.0",
+    "@ava/babel": "^1.0.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.1",
+    "@novemberborn/eslint-plugin-as-i-preach": "^12.0.0",
+    "ava": "^3.5.1",
     "concordance": "^4.0.0",
-    "nyc": "^13.1.0",
-    "react": "^16.7.0",
-    "react-test-renderer": "^16.7.0"
-  },
-  "as-i-preach": {
-    "allowDevDependencies": [
-      "test/**/*.js",
-      "test/**/*.jsx"
-    ],
-    "ignore": [
-      "test/fixtures/react/*.js"
-    ]
+    "eslint": "^6.8.0",
+    "eslint-plugin-ava": "^10.2.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-unicorn": "^17.2.0",
+    "nyc": "^15.0.0",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "ava": {
     "babel": {
@@ -70,6 +69,5 @@
       "lcov",
       "text"
     ]
-  },
-  "standard-engine": "@novemberborn/as-i-preach"
+  }
 }

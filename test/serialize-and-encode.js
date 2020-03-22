@@ -1,5 +1,5 @@
 import test from 'ava'
-import {compareDescriptors, describe, deserialize, formatDescriptor, serialize} from 'concordance'
+import { compareDescriptors, describe, deserialize, formatDescriptor, serialize } from 'concordance'
 
 import React from 'react'
 import renderer from 'react-test-renderer'
@@ -10,25 +10,25 @@ import HelloMessage from './fixtures/react/HelloMessage'
 const plugins = [plugin]
 
 const useDeserialized = (t, getValue) => {
-  const original = describe(getValue(), {plugins})
+  const original = describe(getValue(), { plugins })
 
   const buffer = serialize(original)
-  const deserialized = deserialize(buffer, {plugins})
+  const deserialized = deserialize(buffer, { plugins })
   t.true(
     compareDescriptors(deserialized, original),
     'the deserialized descriptor equals the original')
   t.is(
-    formatDescriptor(deserialized, {plugins}),
-    formatDescriptor(original, {plugins}),
+    formatDescriptor(deserialized, { plugins }),
+    formatDescriptor(original, { plugins }),
     'the deserialized descriptor is formatted like the original')
 
-  const redeserialized = deserialize(serialize(deserialized), {plugins})
+  const redeserialized = deserialize(serialize(deserialized), { plugins })
   t.true(
     compareDescriptors(redeserialized, original),
     'after serializing and deserializing it again, the deserialized descriptor equals the original')
   t.is(
-    formatDescriptor(redeserialized, {plugins}),
-    formatDescriptor(original, {plugins}),
+    formatDescriptor(redeserialized, { plugins }),
+    formatDescriptor(original, { plugins }),
     'after serializing and deserializing it again, the deserialized descriptor is formatted like the original')
 
   t.true(
@@ -57,19 +57,19 @@ test('memoized react elements', useDeserializedRendered, () => {
 })
 test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
-  return React.createElement('Foo', {object: {baz: 'thud'}})
+  return React.createElement('Foo', { object: { baz: 'thud' } })
 })
 test('array values in object properties', macros, () => {
-  return React.createElement('Foo', {object: {baz: ['thud']}})
+  return React.createElement('Foo', { object: { baz: ['thud'] } })
 })
 test('array values in object properties in children', macros, () => {
-  return React.createElement('Foo', null, React.createElement('Bar', {key: 'bar', object: {baz: ['thud']}}))
+  return React.createElement('Foo', null, React.createElement('Bar', { key: 'bar', object: { baz: ['thud'] } }))
 })
 test('multiline string properties', macros, () => {
-  return React.createElement('Foo', {multiline: 'foo\nbar'})
+  return React.createElement('Foo', { multiline: 'foo\nbar' })
 })
 test('illegal spaces in property names', macros, () => {
-  return React.createElement('Foo', {'foo bar': 'baz'})
+  return React.createElement('Foo', { 'foo bar': 'baz' })
 })
 test('concatenated string and number children', macros, () => {
   return React.createElement('div', null, 'foo', 'bar', 42)
@@ -78,5 +78,5 @@ test('concatenated string children (no space insertion)', macros, () => {
   return React.createElement('div', null, 'foo\n', 'bar', ' baz')
 })
 test('properties and children', macros, () => {
-  return React.createElement('Foo', {foo: 'bar'}, 'baz')
+  return React.createElement('Foo', { foo: 'bar' }, 'baz')
 })

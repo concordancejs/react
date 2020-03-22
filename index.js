@@ -1,8 +1,8 @@
 'use strict'
 
-const pkg = require('./package.json')
 const elementFactory = require('./lib/elementFactory')
 const testJsonFactory = require('./lib/testJsonFactory')
+const pkg = require('./package.json')
 
 // Must be unique across all registered plugins.
 exports.name = pkg.name
@@ -25,32 +25,32 @@ exports.theme = {
       start: '<',
       end: '>',
       selfClose: '/',
-      selfCloseVoid: ' /'
+      selfCloseVoid: ' /',
     },
     closeTag: {
       open: '</',
-      close: '>'
+      close: '>',
     },
-    tagName: {open: '', close: ''},
+    tagName: { open: '', close: '' },
     attribute: {
       separator: '=',
       value: {
         openBracket: '{',
         closeBracket: '}',
         string: {
-          line: {open: '"', close: '"', escapeQuote: '"'}
-        }
-      }
+          line: { open: '"', close: '"', escapeQuote: '"' },
+        },
+      },
     },
     child: {
       openBracket: '{',
       closeBracket: '}',
       string: {
-        line: {open: '', close: '', escapeQuote: ''},
-        multiline: {start: '', end: '', escapeQuote: ''}
-      }
-    }
-  }
+        line: { open: '', close: '', escapeQuote: '' },
+        multiline: { start: '', end: '', escapeQuote: '' },
+      },
+    },
+  },
 }
 
 const ELEMENT = Symbol.for('react.element')

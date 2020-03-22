@@ -9,12 +9,12 @@ import HelloMessage from './fixtures/react/HelloMessage'
 const plugins = [plugin]
 
 const diff = (t, getSame, getOther, options) => {
-  t.snapshot(concordance.diff(getSame(), getOther(), Object.assign({plugins}, options)))
+  t.snapshot(concordance.diff(getSame(), getOther(), Object.assign({ plugins }, options)))
 }
 diff.title = prefix => `diffs ${prefix}`
 const diffRendered = (t, getSame, getOther, options) => {
-  const render = value => renderer.create(value).toJSON()
-  t.snapshot(concordance.diff(render(getSame()), render(getOther()), Object.assign({plugins}, options)))
+  const render = value => renderer.create(value).toJSON() // eslint-disable-line unicorn/consistent-function-scoping
+  t.snapshot(concordance.diff(render(getSame()), render(getOther()), Object.assign({ plugins }, options)))
 }
 diffRendered.title = prefix => `diffs rendered ${prefix}`
 
@@ -33,19 +33,19 @@ test('fragments', macros,
   () => <React.Fragment><HelloMessage name='Olivia' /></React.Fragment>)
 
 test('object properties', macros,
-  () => React.createElement('Foo', {object: {baz: 'thud'}}),
-  () => React.createElement('Foo', {object: {baz: 'qux'}}))
+  () => React.createElement('Foo', { object: { baz: 'thud' } }),
+  () => React.createElement('Foo', { object: { baz: 'qux' } }))
 
 test('array values in object properties', macros,
-  () => React.createElement('Foo', {object: {baz: ['thud']}}),
-  () => React.createElement('Foo', {object: {baz: ['qux']}}))
+  () => React.createElement('Foo', { object: { baz: ['thud'] } }),
+  () => React.createElement('Foo', { object: { baz: ['qux'] } }))
 
 test('array values in object properties in children', macros,
   () => {
-    return React.createElement('Foo', null, React.createElement('Bar', {object: {baz: ['thud']}}))
+    return React.createElement('Foo', null, React.createElement('Bar', { object: { baz: ['thud'] } }))
   },
   () => {
-    return React.createElement('Foo', null, React.createElement('Bar', {object: {baz: ['qux']}}))
+    return React.createElement('Foo', null, React.createElement('Bar', { object: { baz: ['qux'] } }))
   })
 
 test('same name, different component function', t => {
@@ -53,76 +53,76 @@ test('same name, different component function', t => {
   class Faux extends React.Component {}
   Faux.displayName = 'HelloMessage'
   const expected = <Faux name='John' />
-  t.snapshot(concordance.diff(actual, expected, {plugins}))
+  t.snapshot(concordance.diff(actual, expected, { plugins }))
 })
 
 test('multiline string properties', macros,
-  () => React.createElement('Foo', {multiline: 'foo\nbar'}),
-  () => React.createElement('Foo', {multiline: 'foo\nbaz'}))
+  () => React.createElement('Foo', { multiline: 'foo\nbar' }),
+  () => React.createElement('Foo', { multiline: 'foo\nbaz' }))
 
 test('string and number children', macros,
   () => React.createElement('div', null, 'foo', 'bar', 42),
   () => React.createElement('div', null, 'foo bar', 39))
 
 test('both have properties and children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
-  () => React.createElement('Foo', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
+  () => React.createElement('Foo', { baz: 'thud' }, React.createElement('Baz')))
 
 test('both have properties and children, different names', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
-  () => React.createElement('Qux', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
+  () => React.createElement('Qux', { baz: 'thud' }, React.createElement('Baz')))
 
 test('both have properties, first has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
-  () => React.createElement('Foo', {baz: 'thud'}))
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
+  () => React.createElement('Foo', { baz: 'thud' }))
 
 test('both have properties, second has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}),
-  () => React.createElement('Foo', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Foo', { foo: 'bar' }),
+  () => React.createElement('Foo', { baz: 'thud' }, React.createElement('Baz')))
 
 test('both have properties, neither has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}),
-  () => React.createElement('Foo', {baz: 'thud'}))
+  () => React.createElement('Foo', { foo: 'bar' }),
+  () => React.createElement('Foo', { baz: 'thud' }))
 
 test('first has properties, both have children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
   () => React.createElement('Foo', null, React.createElement('Baz')))
 
 test('first has properties, both have children, different names', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
   () => React.createElement('Qux', null, React.createElement('Baz')))
 
 test('first has properties, first has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}, React.createElement('Bar')),
+  () => React.createElement('Foo', { foo: 'bar' }, React.createElement('Bar')),
   () => React.createElement('Foo'))
 
 test('first has properties, second has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}),
+  () => React.createElement('Foo', { foo: 'bar' }),
   () => React.createElement('Foo', null, React.createElement('Baz')))
 
 test('first has properties, neither has children, same name', macros,
-  () => React.createElement('Foo', {foo: 'bar'}),
+  () => React.createElement('Foo', { foo: 'bar' }),
   () => React.createElement('Foo'))
 
 test('second has properties, both have children, same name', macros,
   () => React.createElement('Foo', null, React.createElement('Bar')),
-  () => React.createElement('Foo', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Foo', { baz: 'thud' }, React.createElement('Baz')))
 
 test('second has properties, both have children, different names', macros,
   () => React.createElement('Foo', null, React.createElement('Bar')),
-  () => React.createElement('Qux', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Qux', { baz: 'thud' }, React.createElement('Baz')))
 
 test('second has properties, first has children, same name', macros,
   () => React.createElement('Foo', null, React.createElement('Bar')),
-  () => React.createElement('Foo', {baz: 'thud'}))
+  () => React.createElement('Foo', { baz: 'thud' }))
 
 test('second has properties, second has children, same name', macros,
   () => React.createElement('Foo'),
-  () => React.createElement('Foo', {baz: 'thud'}, React.createElement('Baz')))
+  () => React.createElement('Foo', { baz: 'thud' }, React.createElement('Baz')))
 
 test('second has properties, neither has children, same name', macros,
   () => React.createElement('Foo'),
-  () => React.createElement('Foo', {baz: 'thud'}))
+  () => React.createElement('Foo', { baz: 'thud' }))
 
 test('neither have properties, both have children, same name', macros,
   () => React.createElement('Foo', null, React.createElement('Bar')),
@@ -179,4 +179,4 @@ test('max depth', macros,
       </div>
     </div>
   ),
-  {maxDepth: 2})
+  { maxDepth: 2 })

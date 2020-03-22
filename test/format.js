@@ -7,7 +7,7 @@ import plugin from '..'
 import HelloMessage from './fixtures/react/HelloMessage'
 
 const plugins = [plugin]
-const format = (value, options) => concordance.format(value, Object.assign({plugins}, options))
+const format = (value, options) => concordance.format(value, Object.assign({ plugins }, options))
 
 const snapshot = (t, getValue, options) => {
   t.snapshot(format(getValue(), options))
@@ -24,25 +24,25 @@ const macros = [snapshot, snapshotRendered]
 test('react elements', macros, () => <HelloMessage name='John' />)
 test('fragments', macros, () => <React.Fragment><HelloMessage name='John' /></React.Fragment>)
 test('object properties', macros, () => {
-  return React.createElement('Foo', {object: {baz: 'thud'}})
+  return React.createElement('Foo', { object: { baz: 'thud' } })
 })
 test('array values in object properties', macros, () => {
-  return React.createElement('Foo', {object: {baz: ['thud']}})
+  return React.createElement('Foo', { object: { baz: ['thud'] } })
 })
 test('array values in object properties in children', macros, () => {
-  return React.createElement('Foo', null, React.createElement('Bar', {key: 'bar', object: {baz: ['thud']}}))
+  return React.createElement('Foo', null, React.createElement('Bar', { key: 'bar', object: { baz: ['thud'] } }))
 })
 test('multiline string properties', macros, () => {
-  return React.createElement('Foo', {multiline: 'foo\nbar'})
+  return React.createElement('Foo', { multiline: 'foo\nbar' })
 })
 test('illegal spaces in property names', macros, () => {
-  return React.createElement('Foo', {'foo bar': 'baz'})
+  return React.createElement('Foo', { 'foo bar': 'baz' })
 })
 test('string and number children', macros, () => {
   return React.createElement('div', null, 'foo', 'bar', 42)
 })
 test('properties and children', macros, () => {
-  return React.createElement('Foo', {foo: 'bar'}, 'baz')
+  return React.createElement('Foo', { foo: 'bar' }, 'baz')
 })
 
 test('max depth', macros, () => {
@@ -58,10 +58,10 @@ test('max depth', macros, () => {
       </div>
     </div>
   )
-}, {maxDepth: 2})
+}, { maxDepth: 2 })
 
 test('single line attribute values', snapshot, () => {
-  return React.createElement('Foo', {bool: true})
+  return React.createElement('Foo', { bool: true })
 })
 
 test('opaque children', snapshot, () => {
